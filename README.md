@@ -1,2 +1,2 @@
 # Personal_Blog
-Personal Blog
+Personal Blog with AWS LightSail and Django
