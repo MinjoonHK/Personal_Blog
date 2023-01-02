@@ -8,6 +8,9 @@ class Post(models.Model):
 
     def __str__(self):
         return f'[{self.pk}]{self.title}'
+
+    def get_absolute_url(self):
+        return f'/blog/{self.pk}/'
     #self.pk = 해당 포스트의 pk값 self.title = 해당 포스트의 title값
 
 # Create your models here.
