@@ -1,0 +1,18 @@
+#Docker 를 최신버전으로 사용
+version: '3'
+
+services:
+  #WEB 이라는 서비스 하나만 실행
+  web:
+    #현재 폴더를 Build 앞에서 만든 DOCKERFILE 이 현재 폴더의 있음으로 이 파일을 이용해 컨테이너 이미지를 만듭니다
+    build: .
+    #Commnad로 터미널에서 직접 입력했던 서버 실행 명령을 대신 입력합니다
+    command: python manage.py runserver 0.0.0.0:8000
+    #Volumes로 로컬 컴퓨터의 폴더와 도커의 폴더를 연결합니다. 여기서는 현재 폴더를 /usr/src/app 폴더와 연결합니다
+    volumes:
+      - ./:/usr/src/app/
+    #8000 번 포트 사용
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env.dev
