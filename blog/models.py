@@ -13,4 +13,12 @@ class Post(models.Model):
         return f'/blog/{self.pk}/'
     #self.pk = 해당 포스트의 pk값 self.title = 해당 포스트의 title값
 
+class comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    content = models.TextField
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.author}::{self.content}'
 # Create your models here.
