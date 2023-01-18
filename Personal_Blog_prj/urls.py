@@ -23,3 +23,4 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
 path('', include('single_pages.urls'))
 ]
+
