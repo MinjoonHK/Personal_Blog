@@ -2,7 +2,19 @@
 version: '3'
 
 services:
-  #WEB 이라는 서비스 하나만 실행
+  #WEB, nginx 라는 도커 컨테이너 실행
+  #nginx 라는 이름의 컨테이너를 추가합니다
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/usr/src/app/_static
+      - media_volume:/usr/src/app/_media
+  #도메인이나 IP주소 뒤에 아무것도 쓰지 않으면 80이 기본값입니다. Nginx를 도입했으니 이제부터는 80번 포트를 사용합니다.
+    ports:
+      - 80:80
+  #이번에 만든 nginx는 web이라는 컨테이너에 의존성을 갖습니다
+    depends_on:
+      - web
   web:
     #현재 폴더를 Build 앞에서 만든 DOCKERFILE 이 현재 폴더의 있음으로 이 파일을 이용해 컨테이너 이미지를 만듭니다
     build: .
@@ -10,10 +22,12 @@ services:
     command: bash -c "python manage.py runserver 0.0.0.0:8000 && gunicorn Personal_Blog_prj.wsgi:application --bind 0.0.0.0:8000"
     #Volumes로 로컬 컴퓨터의 폴더와 도커의 폴더를 연결합니다. 여기서는 현재 폴더를 /usr/src/app 폴더와 연결합니다
     volumes:
+      - static_volume:/usr/src/app/_static
+      - media_volume:/usr/src/app/_media
       - ./:/usr/src/app/
-    #8000 번 포트 사용
-    ports:
-      - 8000:8000
+  #장고에서 처리한 결과는 8000번 포트로 expose하도록 변경합니다.
+    expose:
+      - 8000
     env_file:
       - ./.env.prod
     #Web container는 db 컨테이너가 실행된 이후에 시작해야 한다는 의미로 depends_on을 db로 설정합니다
@@ -28,4 +42,9 @@ services:
     env_file:
       - ./.env.prod.db
 volumes:
+  #컨테이너가 종료되면 컨테이너 안에 저장되어 있던 내용들도 함꼐 사라지는데, Nginx의 volume 기능을 이용해 저장하면 컨테이너를 다시 실행했을 떄
+  #바로 불러올수 있습니다. 예를 들어 웹 사이트 방문자가 정적 파일을 요청하면 장고에게 요청하지 않고 volume에 저장했던 정적 파일을 바로 보내줍니다.
+  #volume 이름은 static_volume 으로 하겠습니다. 업로드된 파일을 저장하는 media_volume도 추가합니다.
     postgres_data:
+    static_volume:
+    media_volume:
