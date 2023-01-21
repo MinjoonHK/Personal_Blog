@@ -28,7 +28,7 @@ DEBUG = int(os.environ.get('DEBUG', 1))
 if os.environ.get('DJANGO_ALLOWED_HOSTS'):
     ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split(' ')
 else:
-    ALLOWED_HOSTS = ['13.250.154.127', '127.0.0.1', 'localhost']
+    ALLOWED_HOSTS = ['13.250.154.127', '127.0.0.1', 'localhost', 'minjoon-park-hk.com', 'www.minjoon-park-hk.com']
 
 
 # Application definition

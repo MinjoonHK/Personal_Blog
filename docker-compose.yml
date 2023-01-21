@@ -9,12 +9,21 @@ services:
     volumes:
       - static_volume:/usr/src/app/_static
       - media_volume:/usr/src/app/_media
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
   #도메인이나 IP주소 뒤에 아무것도 쓰지 않으면 80이 기본값입니다. Nginx를 도입했으니 이제부터는 80번 포트를 사용합니다.
     ports:
       - 80:80
+      - 443:443
   #이번에 만든 nginx는 web이라는 컨테이너에 의존성을 갖습니다
     depends_on:
       - web
+  certbot:
+    image: certbot/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
   web:
     #현재 폴더를 Build 앞에서 만든 DOCKERFILE 이 현재 폴더의 있음으로 이 파일을 이용해 컨테이너 이미지를 만듭니다
     build: .

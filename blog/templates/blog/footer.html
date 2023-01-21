@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 {% load static %}
+{% load socialaccount %}
+
 <html lang="ko">
-  <head>
+    <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Minjoon Park</title>
+        <title>Park Min Joon's Personal Blog</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
-        <link rel="stylesheet" href="{% static 'single_pages/css/landing.css' %}" media = "screen">
         <script src="https://kit.fontawesome.com/734fbd1f66.js" crossorigin="anonymous"></script>
     </head>
-<body>
-{% include 'blog/navbar.html' %}
-<div class="fixed-bottom">
-    {% include 'blog/footer.html' %}
-</div>
- <!-- Bootstrap core JS-->
+    <body>
+        <!-- Footer-->
+        <footer class="py-4 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Park Min Joon 2023</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-</body>
+    </body>
 </html>

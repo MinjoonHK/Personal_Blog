@@ -1,0 +1,12 @@
+body {
+    background: url('/static/single_pages/images/Astronomy.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+
+}
+
+section {
+    margin-bottom: 130x;
+}
