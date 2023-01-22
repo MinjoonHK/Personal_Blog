@@ -148,3 +148,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, '_static')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CSRF_TRUSTED_ORIGINS = ['https://minjoon-park-hk.com', 'https://www.minjoon-park-hk.com']
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
