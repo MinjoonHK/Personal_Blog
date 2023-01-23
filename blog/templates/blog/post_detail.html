@@ -30,7 +30,9 @@
                 </header>
 
                 <!-- Preview image figure-->
-                <img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="">
+                {% if post.head_image %}
+                    <img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="{{ post.title }} head_image">
+                {% endif %}
                 <!-- Post content-->
                 <section class="mb-4">
                     <p class="fs-4 mb-4">Science is an enterprise that should be cherished as an activity of the free human mind. Because it transforms who we are, how we live, and it gives us an understanding of our place in the universe.</p>
