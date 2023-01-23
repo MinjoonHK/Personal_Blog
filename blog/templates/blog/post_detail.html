@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="ko">
-<head>
-   <meta charset="utf-8" />
+    <head>
+        <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Park Min Joon's Personal Blog</title>
-    <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
-    <script type = "text/javascript" src= "what_time_is_it.js"></script>
-</head>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
+        <script src="https://kit.fontawesome.com/734fbd1f66.js" crossorigin="anonymous"></script>
+    </head>
 <body>
  {% include 'blog/navbar.html' %}
+ </br>
  <!-- Page content-->
  <div class="container">
     <div class="row">
         <div class="col-lg-8">
             <!-- Post content-->
-            <article>
                 <!-- Post header-->
                 <header class="mb-4">
                     <!-- Post title-->
@@ -25,9 +28,23 @@
                     <!-- Post meta content-->
                     <div class="text-muted fst-italic mb-2">{{ post.created_at }}</div>
                     <!-- Post categories-->
-                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
-                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
-                </header>
+            {% if post.file_upload %}
+            <a href="{{ post.file_upload.url }}" class="btn btn-outline-dark" role="button" download>Download Attached files</a>
+                    Download:
+
+                    {% if post.get_file_ext == 'csv' %}
+                    <i class="fas fa-file-csv"></i>
+                    {% elif post.get_file_ext == 'xlsx' or post.get_file_ext == 'xls' %}
+                    <i class="fas fa-file-excel"></i>
+                    {% elif post.get_file_ext == 'docx' or post.get_file_ext == 'doc' %}
+                    <i class="fas fa-file-word"></i>
+                    {% else %}
+                    <i class="far fa-file"></i>
+                    {% endif %}
+                    {{ post.get_file_name }}
+            {% endif %}
+                    </header>
+            <article>
 
                 <!-- Preview image figure-->
                 {% if post.head_image %}
@@ -35,12 +52,8 @@
                 {% endif %}
                 <!-- Post content-->
                 <section class="mb-4">
-                    <p class="fs-4 mb-4">Science is an enterprise that should be cherished as an activity of the free human mind. Because it transforms who we are, how we live, and it gives us an understanding of our place in the universe.</p>
-                    <p class="fs-4 mb-4">The universe is large and old, and the ingredients for life as we know it are everywhere, so there's no reason to think that Earth would be unique in that regard. Whether of not the life became intelligent is a different question, and we'll see if we find that.</p>
-                    <p class="fs-4 mb-4">If you get asteroids about a kilometer in size, those are large enough and carry enough energy into our system to disrupt transportation, communication, the food chains, and that can be a really bad day on Earth.</p>
-                    <h2 class="fw-bolder mb-4 mt-4">I have odd cosmic thoughts every day</h2>
-                    <p class="fs-4 mb-4">For me, the most fascinating interface is Twitter. I have odd cosmic thoughts every day and I realized I could hold them to myself or share them with people who might be interested.</p>
-                    <p class="fs-4 mb-4">Venus has a runaway greenhouse effect. I kind of want to know what happened there because we're twirling knobs here on Earth without knowing the consequences of it. Mars once had running water. It's bone dry today. Something bad happened there as well.</p>
+                    </br>
+                    <p class="card-text">{{ post.content }}</p>
                 </section>
             </article>
         </div>
