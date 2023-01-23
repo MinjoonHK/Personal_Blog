@@ -25,12 +25,12 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" href="/blog">Home</a></li>
                         <li class="nav-item"><a class="nav-link active" href="/about_me/">About Me!</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="/Contact/">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#!">Contact</a></li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         {% if user.is_authenticated %}
                         <li class = "nav-item dropdown">
-                        <a class="nav-link " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ user.username }}
                         </a>
                         </li>
@@ -71,6 +71,30 @@
     </div>
   </div>
 </div>
+        <!-- Page header with logo and tagline-->
+        <header class="py-5 bg-light border-bottom mb-4">
+            <div class="container">
+                <div class="text-center my-5">
+                    <h1 class="fw-bolder">I am waiting for your messages!</h1>
+                    <p class="lead mb-0">Please Contact me</p>
+                </div>
+            </div>
+        </header>
+        </br>
+        <div class="d-flex justify-content-center">
+        <ul>
+            <li><h4><i class="fa-regular fa-envelope"></i> E-mail: minjoon.park.hk@gmail.com</h4></li>
+            <li><h4><i class="fa-solid fa-phone"></i> Phone: +852 59717022</h4></li>
+            <li><h4><i class="fa-solid fa-house"></i> Blog: https://minjoon-park-hk.com</h4></li>
+            <li><h4><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/minjoonpark/">Linked In</a></h4></li>
+        </ul>
+        </div>
+        <!-- Footer-->
+        <div class="fixed-bottom">
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Park Min Joon 2023</p></div>
+        </footer>
+        </div>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

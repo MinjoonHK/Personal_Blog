@@ -17,4 +17,10 @@ def about_me(request):
         'single_pages/about_me.html'
     )
 
+def Contact(request):
+    return render(
+        request,
+        'single_pages/Contact.html'
+    )
+
 # Create your views here.
