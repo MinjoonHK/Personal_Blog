@@ -89,7 +89,7 @@
                     {% for p in post_list %}
                     <div class="card mb-4">
                        {% if p.head_image %}
-                            <img class="img-responsive" src="{{ p.head_image.url }}" width="700" height="345" alt="{{ p }} haed image">
+                            <img class="img-responsive" src="{{ p.head_image.url }}" width="700" height="500" alt="{{ p }} haed image">
                         {% endif %}
                         <div class="card-body">
                             <div class="small text-muted">{{ p.created_at }} by {{ p.author | upper }}</div>
