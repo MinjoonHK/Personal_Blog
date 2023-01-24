@@ -33,10 +33,12 @@
             <div class="card-body">
                 <h6><a href="{{ post.get_absolute_url }}" class="text-decoration-none text-dark">{{ post.title }}</a></h6>
                 <span class="badge badge-pill badge-light float-right">
-                    {{ post.author.username }}
+                   <h7 class="text-dark">
+                       &nbsp &nbsp &nbsp &nbsp &nbsp
+                       Created by {{ post.author.username }}
                     &nbsp
                     &nbsp
-                    {{ post.created_at }}
+                    {{ post.created_at }}</h7>
                 </span>
             </div>
         </div>
