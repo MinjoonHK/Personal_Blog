@@ -94,7 +94,7 @@
                         <div class="card-body">
                             <div class="small text-muted">January 1, 2022</div>
                             <h2 class="card-title">{{ p.title }}</h2>
-                            <p class="card-text">{{ p.content }}</p>
+                            <p class="card-text">{{ p.content | truncatewords:45 }}</p>
                             <a class="btn btn-primary" href="{{ p.get_absolute_url }}">Read more →</a>
                         </div>
                     </div>
