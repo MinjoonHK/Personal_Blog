@@ -92,7 +92,7 @@
                             <img class="card-img-top" src="{{ p.head_image.url }}" alt="{{ p }} haed image">
                         {% endif %}
                         <div class="card-body">
-                            <div class="small text-muted">January 1, 2022</div>
+                            <div class="small text-muted">{{ p.created_at }} by {{ p.author | upper }}</div>
                             <h2 class="card-title">{{ p.title }}</h2>
                             <p class="card-text">{{ p.content | truncatewords:45 }}</p>
                             <a class="btn btn-primary" href="{{ p.get_absolute_url }}">Read more →</a>

@@ -26,7 +26,7 @@
                     <!-- Post title-->
                     <h1 class="fw-bolder mb-1">{{ post.title }}</h1>
                     <!-- Post meta content-->
-                    <div class="text-muted fst-italic mb-2">{{ post.created_at }}</div>
+                    <div class="text-muted fst-italic mb-2">{{ post.created_at }} by {{ post.author | upper }}</div>
                     <!-- Post categories-->
             {% if post.file_upload %}
             <a href="{{ post.file_upload.url }}" class="btn btn-outline-dark" role="button" download>Download Attached files</a>
