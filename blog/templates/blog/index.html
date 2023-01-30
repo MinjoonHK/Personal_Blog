@@ -82,6 +82,11 @@
         </header>
         <!-- Page content-->
         <div class="container">
+            {% if user.is_authenticated %}
+                    <a class="btn btn-info btn-sm float-right" href="/blog/create_post" role="button"><i class="fas fa-pen"></i>New Post</a>
+            {% endif %}
+            </br>
+            </br>
             <div class="row">
                 <!-- Blog entries-->
                 <div class="col-lg-8">
@@ -99,13 +104,24 @@
                         </div>
                     </div>
                     {% endfor %}
+
                     <!-- Pagination-->
                     <nav aria-label="Pagination">
                         <hr class="my-0" />
+                        {% if is_paginated %}
                         <ul class="pagination justify-content-center my-4">
-                            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
-                            <li class="page-item"><a class="page-link" href="#!">Older</a></li>
+                            {% if page_obj.has_next %}
+                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Older</a></li>
+                            {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="#">Older</a></li>
+                            {% endif %}
+                            {% if page_obj.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Newer</a></li>
+                            {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="#">Newer</a></li>
+                            {% endif %}
                         </ul>
+                        {% endif %}
                     </nav>
                 </div>
                 <!-- Side widgets-->

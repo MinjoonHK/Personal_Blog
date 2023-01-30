@@ -20,9 +20,8 @@
 {% include 'blog/navbar.html' %}
 <div class="container justify-content-center">
 
-
 {% block main_area %}
-<h1>Create New Post</h1>
+<h1>Edit Post</h1>
 </hr>
 <form method="post" enctype="multipart/form-data">{% csrf_token %}
     <table>
@@ -32,7 +31,7 @@
 </form>
 {% endblock %}
     </div>
-        <div class="fixed-bottom">
+<div class="fixed-bottom">
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Park Min Joon 2023</p></div>
         </footer>
