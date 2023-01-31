@@ -25,6 +25,12 @@
                 <header class="mb-4">
                     <!-- Post title-->
                     <h1 class="fw-bolder mb-1">{{ post.title }}</h1>
+                     {% if post.tags.exists %}
+                                <i class="fas fa-tags"></i>
+                                {% for tag in post.tags.iterator %}
+                                    <span class="badge bg-light"><h6 class="text-dark">{{ tag }}</h6></span>
+                                {% endfor %}
+                            {% endif %}
                     <!-- Post meta content-->
                     <div class="text-muted fst-italic mb-2">{{ post.created_at }} by {{ post.author | upper }}</div>
                     <!-- Post categories-->

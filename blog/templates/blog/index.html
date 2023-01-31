@@ -103,7 +103,7 @@
                             {% if p.tags.exists %}
                                 <i class="fas fa-tags"></i>
                                 {% for tag in p.tags.iterator %}
-                                    <a href="{{ tag.get_absolute_url }}"><span class="badge bg-light"><h6 class="text-dark">{{ tag }}</h6></span></a>
+                                    <span class="badge bg-light"><h6 class="text-dark">{{ tag }}</h6></span>
                                 {% endfor %}
                             {% endif %}
                             <h2 class="card-title">{{ p.title }}</h2>
