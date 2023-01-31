@@ -83,10 +83,12 @@
         <!-- Page content-->
         <div class="container">
             {% if user.is_authenticated %}
-                    <a class="btn btn-info btn-sm float-right" href="/blog/create_post" role="button"><i class="fas fa-pen"></i>New Post</a>
+                {% if user.is_superuser or user.is_staff %}
+                    <a class="btn btn-secondary btn-sm float-right" href="/blog/create_post" role="button"><i class="fas fa-pen"></i>New Post</a>
+                    </br>
+                    </br>
+                {% endif %}
             {% endif %}
-            </br>
-            </br>
             <div class="row">
                 <!-- Blog entries-->
                 <div class="col-lg-8">
@@ -98,6 +100,12 @@
                         {% endif %}
                         <div class="card-body">
                             <div class="small text-muted">{{ p.created_at }} by {{ p.author | upper }}</div>
+                            {% if p.tags.exists %}
+                                <i class="fas fa-tags"></i>
+                                {% for tag in p.tags.iterator %}
+                                    <a href="{{ tag.get_absolute_url }}"><span class="badge bg-light"><h6 class="text-dark">{{ tag }}</h6></span></a>
+                                {% endfor %}
+                            {% endif %}
                             <h2 class="card-title">{{ p.title }}</h2>
                             <p class="card-text">{{ p.content | truncatewords:45 }}</p>
                             <a class="btn btn-primary" href="{{ p.get_absolute_url }}">Read more →</a>
@@ -131,9 +139,10 @@
                         <div class="card-header">Search</div>
                         <div class="card-body">
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                                <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                                <input class="form-control" type="text" placeholder="Enter search term..." id="search-input" aria-label="Enter search term..." aria-describedby="button-search" />
+                                <button class="btn btn-primary" id="button-search" type="button" onclick="searchPost();">Go!</button>
                             </div>
+                            {% if search_info %}<small class="text-muted">{{ search_info }}</small>{% endif %}
                         </div>
                     </div>
                     <!-- Categories widget-->
@@ -176,6 +185,25 @@
                 </div>
             </div>
         </div>
+        <script>
+        function searchPost(){
+            let searchValue = document.getElementById('search-input').value.trim();
+            if (searchValue.length > 1){
+                location.href="/blog/search/" + searchValue + "/";
+            }
+            else{
+                alert('Word('+ searchValue +') is too short.');
+            }
+        };
+        document.getElementById('search-input').addEventListener('keyup', function(event)
+        {
+            if(event.key === 'Enter'){
+                searchPost();
+            }
+        });
+
+        </script>
+
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Park Min Joon 2023</p></div>

@@ -1,12 +1,14 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from .models import Post
+from .models import Post, Tag
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.core.exceptions import PermissionDenied
+from django.db.models import Q
+
 
 class PostUpdate(LoginRequiredMixin, UpdateView):
     model = Post
-    fields = ['title', 'content', 'head_image', 'file_upload']
+    fields = ['title', 'content', 'head_image', 'tags', 'file_upload']
 
     template_name = 'blog/post_update_form.html'
 
@@ -18,7 +20,7 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
 
 class PostCreate(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'content', 'head_image', 'file_upload']
+    fields = ['title', 'content', 'head_image', 'tags', 'file_upload']
 
     def form_valid(self, form):
         current_user = self.request.user
@@ -27,12 +29,42 @@ class PostCreate(LoginRequiredMixin, CreateView):
             return super(PostCreate, self).form_valid(form)
         else:
             return redirect('/blog')
+
 class PostList(ListView):
     model = Post
     template_name = 'blog/index.html'
     ordering = '-pk'
     paginate_by = 1
 
+def tag_page(request, slug):
+    tag = Tag.objects.get(slug=slug)
+    post_list = tag.post_set.all()
+
+    return render(
+        request,
+        'blog/post_list.html',
+        {
+            'post_list': post_list,
+            'tag': tag
+        }
+    )
+
 class PostDetail(DetailView):
     model = Post
+
+class PostSearch(PostList):
+    paginated_by = None
+
+    def get_queryset(self):
+        q = self.kwargs['q']
+        post_list = Post.objects.filter(
+            Q(title__contains=q) | Q(tags__name__contains=q)
+        ).distinct()
+        return post_list
+
+    def get_context_data(self, **kwargs):
+        context = super(PostSearch, self).get_context_data()
+        q = self.kwargs['q']
+        context['search_info'] = f'search: {q} ({self.get_queryset().count()})'
+        return context
 # Create your views here.
