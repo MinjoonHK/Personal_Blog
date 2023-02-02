@@ -9,9 +9,11 @@ cryptography==39.0.0
 defusedxml==0.7.1
 Django==4.1.5
 django-allauth==0.52.0
+django-crispy-forms==1.14.0
 gunicorn==20.1.0
 idna==3.4
 oauthlib==3.2.2
+pi==0.1.2
 Pillow==9.4.0
 psycopg2-binary==2.9.5
 pycparser==2.21
