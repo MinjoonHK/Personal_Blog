@@ -1,4 +1,5 @@
 from django.db import models
+from bs4 import BeautifulSoup
 from django.contrib.auth.models import User
 import os
 
@@ -38,10 +39,13 @@ class Post(models.Model):
 
 class comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    content = models.TextField
+    author = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    content = models.TextField(null=True, blank=True, default='')
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f'{self.author}::{self.content}'
+
+
 # Create your models here.

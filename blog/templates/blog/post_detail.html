@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load crispy_forms_tags %}
 <html lang="ko">
     <head>
         <meta charset="utf-8" />
@@ -65,6 +66,42 @@
                     <p class="card-text">{{ post.content }}</p>
                 </section>
             </article>
+            <div class="comment-area">
+                <!-- Comments Form -->
+                <div class="card my-4">
+                    <h5 class="card-header">Leave a Comment</h5>
+                    <div class="card-body">
+                        {% if user.is_authenticated %}
+                        <form id="comment-form" method="POST" action="{{ post.get_absolute_url }}new_comment/">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {{ comment_form | crispy }}
+                            </div>
+                            <hr/>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                        {% else %}
+                        <div style="text-align:center">
+                            <a role="button" class="btn btn-outline-dark btn-block btn-lg" href="#" data-toggle="modal" data-target="#lgoinModal">Log in and Leave a comment</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% if post.comment_set.exists %}
+                    {% for comment in post.comment_set.iterator %}
+                    <!-- Single Comment -->
+                    <div class="media mb-4" id="comment-{{ comment.pk }}">
+                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                        <div class="media-body">
+                            <h5 class="mt-0">{{ comment.author.username }} &nbsp;&nbsp; <small class="text-muted">{{ comment.created_at }}</small>
+                            </h5>
+                            <p>{{ comment.content | linebreaks }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <hr/>
         </div>
         <div class="col-lg-4">
                     <!-- Search widget-->
