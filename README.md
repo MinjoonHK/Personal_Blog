@@ -15,12 +15,24 @@ Django, Docker, AWS 를 이용한 블로그 개발 개인 프로젝트입니다.
   <li>Database : Sqlite, PostgreSQL</li>
 </ul>
 
-### 🚪대문페이지
+### 🎨이미지
 <details>
-  <summary>이미지</summary>
+  <summary>대문페이지</summary>
 
   ![대문페이지](https://github.com/MinjoonHK/Personal_Blog/assets/108560916/68e8fbdf-32a5-4ee7-bbcf-bacc8e71c61b)
 
+</details>
+
+<details>
+  <summary>메인페이지</summary>
+
+  ![세부페이지](https://github.com/MinjoonHK/Management_system/assets/108560916/9e0074dc-89f2-45ab-b330-3d2477c0df4a)
+</details>
+
+<details>
+  <sumamry>세부페이지</sumamry>
+
+  ![detail_page](https://github.com/MinjoonHK/Management_system/assets/108560916/a698ebe0-6095-447d-9bb8-381ce7ebf0db)
 </details>
 
 ## 📌주요 기능
