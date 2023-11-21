@@ -25,7 +25,7 @@ Django, Docker, AWS 를 이용한 블로그 개발 개인 프로젝트입니다.
 <details>
   <summary>메인페이지</summary>
 
-  ![세부페이지](https://github.com/MinjoonHK/Management_system/assets/108560916/9e0074dc-89f2-45ab-b330-3d2477c0df4a)
+  ![메인페이지](https://github.com/MinjoonHK/Management_system/assets/108560916/771e725f-2c5d-4c90-ade4-b32d5e385197)
 </details>
 
 <details>
