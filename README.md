@@ -20,7 +20,6 @@ Django, Docker, AWS 를 이용한 블로그 개발 개인 프로젝트입니다.
   <summary>대문페이지</summary>
 
   ![대문페이지](https://github.com/MinjoonHK/Personal_Blog/assets/108560916/68e8fbdf-32a5-4ee7-bbcf-bacc8e71c61b)
-
 </details>
 
 <details>
@@ -30,7 +29,7 @@ Django, Docker, AWS 를 이용한 블로그 개발 개인 프로젝트입니다.
 </details>
 
 <details>
-  <sumamry>상세페이지</sumamry>
+  <summary>상세페이지</sumamry>
 
   ![detail_page](https://github.com/MinjoonHK/Management_system/assets/108560916/a698ebe0-6095-447d-9bb8-381ce7ebf0db)
 </details>
