@@ -19,19 +19,19 @@ Django, Docker, AWS 를 이용한 블로그 개발 개인 프로젝트입니다.
 <details>
   <summary>대문페이지</summary>
 
-  ![대문페이지](https://github.com/MinjoonHK/Personal_Blog/assets/108560916/68e8fbdf-32a5-4ee7-bbcf-bacc8e71c61b)
+  ![대문페이지](https://github.com/MinjoonHK/AlgoLog_Reboot/assets/108560916/f5bc8aee-4905-4db1-982d-de0144624554)
 </details>
 
 <details>
   <summary>메인페이지</summary>
 
-  ![메인페이지](https://github.com/MinjoonHK/Management_system/assets/108560916/771e725f-2c5d-4c90-ade4-b32d5e385197)
+  ![메인페이지](https://github.com/MinjoonHK/AlgoLog_Reboot/assets/108560916/59c6bc22-e6e8-4ecb-8074-c56793d50be3)
 </details>
 
 <details>
   <summary>상세페이지</summary>
 
-  ![detail_page](https://github.com/MinjoonHK/Management_system/assets/108560916/a698ebe0-6095-447d-9bb8-381ce7ebf0db)
+  ![세부페이지](https://github.com/MinjoonHK/AlgoLog_Reboot/assets/108560916/cb36ab4f-2fe6-414d-a4f5-2a178323e3f6)
 </details>
 
 ## 📌주요 기능
